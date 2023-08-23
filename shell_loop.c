@@ -99,7 +99,7 @@ void find_cmd(info_t *info)
 	for (i = 0, j = 0; info->arg[i]; i++)
 		if (!is_delimeter(info->arg[i], " \t\n"))
 			j++;
-	if (!y)
+	if (!j)
 		return;
 
 	path = find_path(info, get_env(info, "PATH="), info->argv[0]);
