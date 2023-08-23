@@ -79,9 +79,7 @@ typedef struct passinfo
 	list_t *alias;
 	char **environ;
 	int env_changed;
-	
-
-	char **cmd_buf; 
+char **cmd_buf; 
 	int cmd_buf_type;
 	int readfd;
 	int histcount;
@@ -131,8 +129,6 @@ int _putchar(char);
 char *my_strncpy(char *, const char *, size_t);
 char *my_strncat(char *, char *, int);
 char *my_strchr(char *, char);
-
-/* towz.c */
 char **strtow(char *, char *);
 char **strtow2(char *, char);
 
@@ -141,8 +137,6 @@ char *_memset(char *, char, unsigned int);
 void ffree(char **);
 void *_realloc(void *, unsigned int, unsigned int);
 
-/* mem.c */
-int bfree(void **);
 
 /* atoi.c */
 int interactive(info_t *);
@@ -218,4 +212,5 @@ int replace_string(char **, char *);
 
 void write_stdout(char *);
 void write_stderr(char *);
+int bfree(void **);
 #endif
