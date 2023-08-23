@@ -14,7 +14,9 @@ list_t *add_node(list_t **head, const char *str, int num)
 
 	if (!head)
 		return (NULL);
+	
 	new_head = malloc(sizeof(list_t));
+	
 	if (!new_head)
 		return (NULL);
 	_memset((void *)new_head, 0, sizeof(list_t));
@@ -96,9 +98,9 @@ size_t printlist_str(const list_t *n)
 }
 
 /**
- * delete_node_at_index - function that deletes node
+ * delete_node_at_index - function that deletes the nodes
  * at given index
- * @head: address of pointer to first node
+ * @head: it address of pointer to first node
  * @index: index of node to delete
  *
  * Return: 1 on success, 0 on failure
@@ -106,7 +108,7 @@ size_t printlist_str(const list_t *n)
 int delete_node_at_index(list_t **head, unsigned int index)
 {
 	list_t *node, *prev_node;
-	unsigned int t = 0;
+	unsigned int i = 0;
 
 	if (!head || !*head)
 		return (0);
@@ -122,14 +124,14 @@ int delete_node_at_index(list_t **head, unsigned int index)
 	node = *head;
 	while (node)
 	{
-		if (t == index)
+		if (i == index)
 		{
 			prev_node->next = node->next;
 			free(node->str);
 			free(node);
 			return (1);
 		}
-		t++;
+		i++;
 		prev_node = node;
 		node = node->next;
 	}
@@ -137,10 +139,9 @@ int delete_node_at_index(list_t **head, unsigned int index)
 }
 
 /**
- * free_list - function that frees all nodes of a list
- * @head_ptr: address of pointer to head node
+ * free_list - function that frees all nodes of a thee list.
+ * @head_ptr: address of pointer to head node.
  *
- * Return: nothing
  */
 void free_list(list_t **head_ptr)
 {
