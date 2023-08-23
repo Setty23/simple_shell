@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * is_chain - function that test if current char is a chain delimeter
+ * is_chain - function that checks if char is a chain delimeter
  * @info: the parameter struct containing arguments
  * @buf: the char buffer
  * @p: address of current position in buf
@@ -40,18 +40,18 @@ int is_chain(info_t *info, char *buf, size_t *p)
 }
 
 /**
- * check_chain - function that checks chain of string
- * @info: the parameter struct containing arguments
- * @buf: the char buffer
- * @p: address of current position in buffer
+ * check_chain - function that checks chain of strings
+ * @info: the parameter structure containing arguments
+ * @buf: the character buffer
+ * @q: address of current position in buffer
  * @i: starting position in buffer
- * @len: length of buf
+ * @len: length of the buffer
  *
  * Return: Void
  */
 void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 {
-	size_t y = *p;
+	size_t y = *q;
 
 	if (info->cmd_buf_type == CMD_AND)
 	{
@@ -70,22 +70,22 @@ void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
 		}
 	}
 
-	*p = y;
+	*q = y;
 }
 
 /**
- * replace_alias - function that replaces an aliases in the tokenized string
- * @info: the parameter struct containing arguments
+ * replace_alias - function that replaces tee aliases in the tokenized string.
+ * @info: the parameter struct containing arguments.
  *
- * Return: 1 if replaced, 0 otherwise
+ * Return: 1 if replaced, 0 if not
  */
 int replace_alias(info_t *info)
 {
-	int t;
+	int i;
 	list_t *node;
 	char *c;
 
-	for (t = 0; t < 10; t++)
+	for (i = 0; i < 10; t++)
 	{
 		node = node_starts_with(info->alias, info->argv[0], '=');
 		if (!node)
@@ -103,52 +103,52 @@ int replace_alias(info_t *info)
 }
 
 /**
- * replace_vars - function that replaces vars in tokenized string
+ * replace_vars - function that replaces environment vars in tokenized string
  * @info: the parameter struct that contains arguments
  *
  * Return: 1 if replaced, 0 otherwise
  */
 int replace_vars(info_t *info)
 {
-	int t = 0;
+	int i = 0;
 	list_t *node;
 
-	for (t = 0; info->argv[t]; t++)
+	for (i = 0; info->argv[i]; t++)
 	{
-		if (info->argv[t][0] != '$' || !info->argv[t][1])
+		if (info->argv[i][0] != '$' || !info->argv[i][1])
 			continue;
 
-		if (!my_strcmp(info->argv[t], "$?"))
+		if (!my_strcmp(info->argv[i], "$?"))
 		{
-			replace_string(&(info->argv[t]),
+			replace_string(&(info->argv[i]),
 				my_strdup(convert_number(info->status, 10, 0)));
 			continue;
 		}
-		if (!my_strcmp(info->argv[t], "$$"))
+		if (!my_strcmp(info->argv[i], "$$"))
 		{
-			replace_string(&(info->argv[t]),
+			replace_string(&(info->argv[i]),
 				my_strdup(convert_number(getpid(), 10, 0)));
 			continue;
 		}
-		node = node_starts_with(info->env, &info->argv[t][1], '=');
+		node = node_starts_with(info->env, &info->argv[i][1], '=');
 		if (node)
 		{
-			replace_string(&(info->argv[t]),
+			replace_string(&(info->argv[i]),
 				my_strdup(my_strchr(node->str, '=') + 1));
 			continue;
 		}
-		replace_string(&info->argv[t], my_strdup(""));
+		replace_string(&info->argv[i], my_strdup(""));
 
 	}
 	return (0);
 }
 
 /**
- * replace_string - function that replaces a string
- * @old: old string to replace
- * @new: new string to replace @old
+ * replace_string - function that replaces oldstring with new
+ * @old: old string to replaced
+ * @new: new string to replace the old string.
  *
- * Return: 1 if replaced, 0 otherwise
+ * Return: 1 if replaced, 0 if not.
  */
 int replace_string(char **old, char *new)
 {
