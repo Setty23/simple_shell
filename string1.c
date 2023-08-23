@@ -2,23 +2,23 @@
 
 /**
  * my_strlen - function that prints length of a string.
- * @r:  string whose length to be printed
+ * @c:  string whose length to be printed
  *
  * Return: int length of string
  */
-int my_strlen(char *r)
+int my_strlen(char *c)
 {
-	int j = 0;
+	int x = 0;
 
-	if (!r)
+	if (!c)
 		return (0);
 
-	while (*r++)
-		j++;
-	return (j);
+	while (*c++)
+		x++;
+	return (x);
 }
 /**
- * starts_with - function that checks whether  the needle begins with haystack
+ * starts_with - function that checks whether the needle begins with haystack
  * @haystack: string to be searched for.
  * @needle: the sub string to be sought.
  *
@@ -40,13 +40,13 @@ char *starts_with(const char *haystack, const char *needle)
  */
 char *my_strcat(char *dest, char *src)
 {
-	char *p = desti;
+	char *p = dest;
 
-	while (*desti)
-		desti++;
-	while (*srce)
-		*desti++ = *srce++;
-	*desti = *srce;
+	while (*dest)
+		dest++;
+	while (*src)
+		*dest++ = *src++;
+	*dest = *src;
 	return (p);
 }
 /**
