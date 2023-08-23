@@ -19,7 +19,7 @@ char *_memset(char *s, char b, unsigned int n)
 
 /**
  * ffree - function that frees a string of strings
- * @pp: string of strings to be freed
+ * @q: string of strings to be freed
  *
  * Return: nothing
  */
