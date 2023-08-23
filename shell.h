@@ -12,25 +12,17 @@
 #include <fcntl.h>
 #include <errno.h>
 
-/* for read/write buffers */
 #define READ_BUF_SIZE 1024
 #define WRITE_BUF_SIZE 1024
 #define BUF_FLUSH -1
-
-/* for command chaining */
 #define CMD_NORM	0
 #define CMD_OR		1
 #define CMD_AND		2
 #define CMD_CHAIN	3
-
-/* for convert_number() */
 #define CONVERT_LOWERCASE	1
 #define CONVERT_UNSIGNED	2
-
-/* 1 if using system getline() */
 #define USE_GETLINE 0
 #define USE_STRTOK 0
-
 #define HIST_FILE	".simple_shell_history"
 #define HIST_MAX	4096
 
@@ -111,34 +103,25 @@ typedef struct builtin
 	int (*func)(info_t *);
 } builtin_table;
 
-
-/* shloop.c */
 int hsh(info_t *, char **);
 int find_builtin(info_t *);
 void find_cmd(info_t *);
 void exec_cmd(info_t *);
-
-/* shell_pointer.c */
 int is_cmd(info_t *, char *);
 char *dup_chars(char *, int, int);
 char *find_path(info_t *, char *, char *);
-
-/* loophsh.c */
 int loophsh(char **);
 
-/*_errors.c */
 void _errputs(char *);
 int _errputchar(char);
 int fd_put(char, int);
 int fd_puts(char *, int);
 
-/* _string1.c */
 int my_strlen(char *);
 int my_strcmp(char *, char *);
 char *starts_with(const char *, const char *);
 char *my_strcat(char *, char *);
 
-/* string2.c */
 char *my_strcpy(char *, char *);
 char *my_strdup(const char *);
 void _puts(char *);
