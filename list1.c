@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * add_node - function that adds a node to the start of the list
+ * add_node - custom function that adds a node to the start of the list
  * @head: address of pointer to head node
  * @str: str field of node
  * @num: node index used by history
@@ -34,12 +34,12 @@ list_t *add_node(list_t **head, const char *str, int num)
 }
 
 /**
- * add_node_end - function that adds a node at end of the list
- * @head: address of pointer to head node
- * @str: str field of node
+ * add_node_end - function that adds a node at end.
+ * @head: address of pointer to the head node
+ * @str: string field of node
  * @num: node index used by history
  *
- * Return: size of list
+ * Return: the size of list
  */
 list_t *add_node_end(list_t **head, const char *str, int num)
 {
@@ -75,21 +75,21 @@ list_t *add_node_end(list_t **head, const char *str, int num)
 }
 
 /**
- * print_list_str - function that prints only the str element
+ * printlist_str - function that prints only the str element
  * of a list_t linked list
- * @h: pointer to first node of the linked_list
+ * @n: pointer to first node of the linked_list
  *
  * Return: size of list
  */
-size_t print_list_str(const list_t *h)
+size_t printlist_str(const list_t *n)
 {
 	size_t t = 0;
 
-	while (h)
+	while (n)
 	{
-		_puts(h->str ? h->str : "(nil)");
+		_puts(n->str ? h->str : "(nil)");
 		_puts("\n");
-		h = h->next;
+		n = n->next;
 		t++;
 	}
 	return (t);
