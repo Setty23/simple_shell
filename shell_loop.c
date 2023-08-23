@@ -1,13 +1,14 @@
 #include "shell.h"
 
 /**
- * hsh - main shell loop function
- * @info: the parameter & return info struct
- * @av: the argument vector from main() function
+ * hsh - the main shell loop function
+ * @info: the parameter nd  return info structure
+ * @av: the argument vector from main function.
  *
- * Return: 0 on success, 1 on error,
+ * Return: 0 on success, 1 if it is error,
  * or NULL
  */
+
 int hsh(info_t *info, char **av)
 {
 	ssize_t r = 0;
@@ -45,14 +46,15 @@ int hsh(info_t *info, char **av)
 }
 
 /**
- * find_builtin - function that finds a builtin command
- * @info: the parameter & return info struct
+ * find_builtin - function that finds the builtin command.
+ * @info: the parameter and return info structure.
  *
  * Return: -1 if builtin is not found,
  *	0 if builtin executed successfully,
  *	1 if builtin found but not successful,
  *	-2 if builtin signals exit()
  */
+
 int find_builtin(info_t *info)
 {
 	int x, built_in_ret = -1;
@@ -77,15 +79,16 @@ int find_builtin(info_t *info)
 }
 
 /**
- * find_cmd - function that finds a command in PATH
- * @info: the parameter & return info struct
+ * find_cmd - function that finds a command in path.
+ * @info: the parameter  return info structure
  *
  * Return: void
  */
+
 void find_cmd(info_t *info)
 {
 	char *path = NULL;
-	int x, y;
+	int i, j;
 
 	info->path = info->argv[0];
 	if (info->linecount_flag == 1)
@@ -93,9 +96,9 @@ void find_cmd(info_t *info)
 		info->line_count++;
 		info->linecount_flag = 0;
 	}
-	for (x = 0, y = 0; info->arg[x]; x++)
-		if (!is_delimeter(info->arg[x], " \t\n"))
-			y++;
+	for (i = 0, j = 0; info->arg[i]; i++)
+		if (!is_delimeter(info->arg[i], " \t\n"))
+			j++;
 	if (!y)
 		return;
 
