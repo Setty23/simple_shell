@@ -49,7 +49,7 @@ int is_chain(info_t *info, char *buf, size_t *p)
  *
  * Return: Void
  */
-void check_chain(info_t *info, char *buf, size_t *p, size_t i, size_t len)
+void check_chain(info_t *info, char *buf, size_t *q, size_t i, size_t len)
 {
 	size_t y = *q;
 
@@ -85,7 +85,7 @@ int replace_alias(info_t *info)
 	list_t *node;
 	char *c;
 
-	for (i = 0; i < 10; t++)
+	for (i = 0; i < 10; i++)
 	{
 		node = node_starts_with(info->alias, info->argv[0], '=');
 		if (!node)
@@ -113,7 +113,7 @@ int replace_vars(info_t *info)
 	int i = 0;
 	list_t *node;
 
-	for (i = 0; info->argv[i]; t++)
+	for (i = 0; info->argv[i]; i++)
 	{
 		if (info->argv[i][0] != '$' || !info->argv[i][1])
 			continue;
