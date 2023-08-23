@@ -1,18 +1,19 @@
 #include "shell.h"
 
 /**
- **_memset - function that fills memory with a constant byte
- *@s: pointer to the memory area
- *@b: byte to fill *s (pointer) with
+ **_memset - function that fills the memory with a constant byte.
+ *@s: pointer to the memory.
+ *@b: byte to fill pointer
  *@n: amount of bytes to be filled
  *Return: (s) a pointer to the memory area s
  */
+
 char *_memset(char *s, char b, unsigned int n)
 {
-	unsigned int t;
+	unsigned int i;
 
-	for (t = 0; t < n; t++)
-		s[t] = b;
+	for (t = 0; i < n; t++)
+		s[i] = b;
 	return (s);
 }
 
@@ -22,14 +23,14 @@ char *_memset(char *s, char b, unsigned int n)
  *
  * Return: nothing
  */
-void ffree(char **pp)
+void ffree(char **q)
 {
-	char **a = pp;
+	char **a = q;
 
-	if (!pp)
+	if (!q)
 		return;
-	while (*pp)
-		free(*pp++);
+	while (*q)
+		free(*q++);
 	free(a);
 }
 
@@ -45,13 +46,13 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
 	char *p;
 
-	if (!ptr)
-		return (malloc(new_size));
 	if (!new_size)
 		return (free(ptr), NULL);
 	if (new_size == old_size)
 		return (ptr);
-
+	if (!ptr)
+		return (malloc(new_size));
+	
 	p = malloc(new_size);
 	if (!p)
 		return (NULL);
