@@ -1,26 +1,25 @@
 #include "shell.h"
 
 /**
- * list_len - function that determines length of linked list
+ * list_len - function that checks length of linked list
  * @h: pointer to first node
  *
- * Return: size of list
+ * Return: size length of list
  */
 size_t list_len(const list_t *h)
 {
-	size_t t = 0;
+	size_t i = 0;
 
 	while (h)
 	{
 		h = h->next;
-		t++;
+		i++;
 	}
-	return (t);
+	return (i);
 }
 
 /**
- * list_to_strings - function that returns an array
- * of strings of the list->str
+ * list_to_strings - function that returns an array of strings
  * @head: address of pointer to first node
  *
  * Return: array of strings
@@ -28,30 +27,31 @@ size_t list_len(const list_t *h)
 char **list_to_strings(list_t *head)
 {
 	list_t *node = head;
-	size_t x = list_len(head), y;
+	size_t i = list_len(head), j;
 	char **strs;
 	char *str;
 
 	if (!head || !x)
 		return (NULL);
-	strs = malloc(sizeof(char *) * (x + 1));
+
+	strs = malloc(sizeof(char *) * (i + 1));
 	if (!strs)
 		return (NULL);
-	for (x = 0; node; node = node->next, x++)
+	for (i = 0; node; node = node->next, i++)
 	{
 		str = malloc(my_strlen(node->str) + 1);
 		if (!str)
 		{
-			for (y = 0; y < x; y++)
-				free(strs[y]);
+			for (j = 0; j < i; i++)
+				free(strs[i]);
 			free(strs);
 			return (NULL);
 		}
-
 		str = my_strcpy(str, node->str);
-		strs[x] = str;
+		strs[i] = str;
 	}
-	strs[x] = NULL;
+	strs[i] = NULL;
+
 	return (strs);
 }
 
