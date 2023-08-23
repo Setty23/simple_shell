@@ -11,26 +11,30 @@
 int is_chain(info_t *info, char *buf, size_t *p)
 {
 	size_t y = *p;
+	char current_char = buf[y];
+	char next_char = buf[y + 1];
 
-	if (buf[y] == '|' && buf[y + 1] == '|')
+	if (current_char == '|' && next_char == '|')
 	{
-		buf[y] = 0;
+		buf[y] = '\0';
 		y++;
 		info->cmd_buf_type = CMD_OR;
 	}
-	else if (buf[y] == '&' && buf[y + 1] == '&')
+	else if (current_char == '&' && next_char == '&')
 	{
-		buf[y] = 0;
+		buf[y] = '\0';
 		y++;
 		info->cmd_buf_type = CMD_AND;
 	}
-	else if (buf[y] == ';') /* found end of this command */
+	else if (current_char == ';')
 	{
-		buf[y] = 0; /* replace semicolon with null */
+		buf[y] = '\0';
 		info->cmd_buf_type = CMD_CHAIN;
 	}
 	else
+	{
 		return (0);
+	}
 	*p = y;
 	return (1);
 }
