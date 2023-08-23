@@ -79,11 +79,11 @@ typedef struct passinfo
 	list_t *alias;
 	char **environ;
 	int env_changed;
-char **cmd_buf; 
+	char **cmd_buf; 
 	int cmd_buf_type;
 	int readfd;
 	int histcount;
-int status;
+	int status;
 } info_t;
 
 #define INFO_INIT \
