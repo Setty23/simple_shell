@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * my_strlen - function that prints length of a string
+ * my_strlen - function that prints length of a string.
  * @r:  string whose length to be printed
  *
  * Return: int length of string
@@ -18,11 +18,11 @@ int my_strlen(char *r)
 	return (j);
 }
 /**
- * starts_with - function that checks whether  needle begins with haystack
- * @haystack: string to be searched for
- * @needle: the substring to be sought
+ * starts_with - function that checks whether  the needle begins with haystack
+ * @haystack: string to be searched for.
+ * @needle: the sub string to be sought.
  *
- * Return: address of next character of haystack or NULL if otherwise
+ * Return: address of next of haystack or NULL if otherwise
  */
 char *starts_with(const char *haystack, const char *needle)
 {
@@ -32,13 +32,13 @@ char *starts_with(const char *haystack, const char *needle)
 	return ((char *)haystack);
 }
 /**
- * my_strcat - function that concatenates desti and srce
- * @desti: destination buffer
- * @srce:  source buffer
+ * my_strcat - function that concatenates dest and src
+ * @dest: destination b uffer.
+ * @src:  source bu ffer
  *
- * Return: ptr to desti buffer
+ * Return: ptr to dest buffer
  */
-char *my_strcat(char *desti, char *srce)
+char *my_strcat(char *dest, char *src)
 {
 	char *p = desti;
 
